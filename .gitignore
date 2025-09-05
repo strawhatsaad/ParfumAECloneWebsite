@@ -1,5 +1,9 @@
 # Node modules
 node_modules/
+.next/
+out/
+dist/
+build/
 
 # Environment variables
 .env

@@ -102,13 +102,13 @@ export async function getTesterProductsAndFilters() {
 
   const filters = {
     brands: [
-      ...new Set(products.map((p) => p.brand).filter(Boolean)),
+      ...new Set(products.map((p: any) => p.brand).filter(Boolean)),
     ] as string[],
     fragranceTypes: [
-      ...new Set(products.map((p) => p.fragranceType).filter(Boolean)),
+      ...new Set(products.map((p: any) => p.fragranceType).filter(Boolean)),
     ] as string[],
     genders: [
-      ...new Set(products.map((p) => p.gender).filter(Boolean)),
+      ...new Set(products.map((p: any) => p.gender).filter(Boolean)),
     ] as string[],
   };
 
