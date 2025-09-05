@@ -6,9 +6,12 @@ type GraphQLResponse = {
 export async function shopifyFetch<T>({
   query,
   variables = {},
+  // Add a revalidate option to the function's parameters
+  revalidate,
 }: {
   query: string;
   variables?: Record<string, any>;
+  revalidate?: number; // The number of seconds to cache
 }): Promise<T> {
   const endpoint = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/api/2024-04/graphql.json`;
 
@@ -21,7 +24,8 @@ export async function shopifyFetch<T>({
           process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!,
       },
       body: JSON.stringify({ query, variables }),
-      cache: "no-store", // Use 'no-store' for cart mutations, consider 'force-cache' or 'revalidate' for product queries
+      // Replace the hardcoded 'no-store' with the revalidate option
+      next: { revalidate },
     });
 
     const body = (await result.json()) as GraphQLResponse;
