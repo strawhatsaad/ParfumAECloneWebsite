@@ -22,7 +22,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<ShopifyCart | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // This effect runs once on the client to load the initial cart
   useEffect(() => {
     const initializeCart = async () => {
       const cartId = localStorage.getItem("shopify_cart_id");
@@ -32,7 +31,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           setCart(cartData);
         } catch (err) {
           console.error("Failed to fetch initial cart", err);
-          localStorage.removeItem("shopify_cart_id"); // Clear invalid cart ID
+          localStorage.removeItem("shopify_cart_id");
         }
       }
       setIsLoading(false);

@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { useCart } from "@/contexts/CartContext";
 
-// --- SVG ICONS ---
 const HeartIcon = ({ isFilled }: { isFilled: boolean }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +24,6 @@ const HeartIcon = ({ isFilled }: { isFilled: boolean }) => (
   </svg>
 );
 
-// --- TYPE DEFINITIONS ---
 type Product = {
   id: string;
   variantId: string;

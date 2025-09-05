@@ -50,7 +50,6 @@ const GET_TESTER_BOX_VARIANT = `
   }
 `;
 
-// Define a type for the product data coming from Shopify
 type ProductEdge = {
   node: {
     id: string;
@@ -68,11 +67,10 @@ export async function getTesterProductsAndFilters() {
   const collectionHandle = "tester-perfumes";
   const productHandle = "perfume-tester-box";
 
-  // Pass the revalidate option to the fetch calls
   const productsResponse = await shopifyFetch<{ collection: any }>({
     query: GET_TESTER_PRODUCTS,
     variables: { handle: collectionHandle },
-    revalidate: 3600, // Cache for 1 hour
+    revalidate: 3600,
   });
 
   if (!productsResponse.collection) {
@@ -84,10 +82,9 @@ export async function getTesterProductsAndFilters() {
   const testerBoxResponse = await shopifyFetch<{ product: any }>({
     query: GET_TESTER_BOX_VARIANT,
     variables: { handle: productHandle },
-    revalidate: 3600, // Cache for 1 hour
+    revalidate: 3600,
   });
 
-  // ... (the rest of the function remains the same)
   if (!testerBoxResponse.product) {
     throw new Error(
       `Product with handle "${productHandle}" not found. Please check the handle in your Shopify admin.`
@@ -149,6 +146,6 @@ export async function getProductsByIds(ids: string[]) {
     query: GET_PRODUCTS_BY_IDS,
     variables: { ids },
   });
-  // Filter out any null results if an ID was invalid
+
   return data.nodes.filter(Boolean);
 }
