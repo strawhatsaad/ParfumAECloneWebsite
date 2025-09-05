@@ -1,0 +1,5 @@
+{
+  "/tester-box/page": "app/tester-box/page.js",
+  "/cart/page": "app/cart/page.js",
+  "/wishlist/page": "app/wishlist/page.js"
+}
