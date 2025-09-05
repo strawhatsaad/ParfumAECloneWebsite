@@ -102,7 +102,6 @@ export function TesterBoxBuilder({
       updateCart(newCart);
       setIsBundleReadyModalOpen(false);
       setBundleItems([]);
-      alert("Success! Your Tester Box has been added to the cart.");
     } catch (error) {
       alert("Failed to add bundle to cart.");
       console.error(error);
